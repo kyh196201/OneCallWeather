@@ -31,4 +31,5 @@ button {
 :root {
   --menu-button-background: #527c9b;
   --menu-button-font: #fff;
+  --background-color: #ffffff;
 }

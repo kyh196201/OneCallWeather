@@ -12,7 +12,7 @@
   </head>
   <body>
     <main id="App">
-      <section class="firstLoadingPage hidden">
+      <section class="firstLoadingPage">
         <img src="./src/images/firstLoader.gif" alt="firstLoader" />
       </section>
       <section class="card-container">
@@ -61,6 +61,15 @@
           document
             .querySelector(".menu__list")
             .classList.toggle("dropDown-animate");
+        }
+      };
+
+      const state = document.readyState;
+      document.onreadystatechange = function () {
+        if (document.readyState === "complete") {
+          setTimeout(() => {
+            document.querySelector(".firstLoadingPage").classList.add("hidden");
+          }, 1000);
         }
       };
     </script>
