@@ -1,0 +1,19 @@
+.firstLoadingPage {
+  min-width: 320px;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+}
+
+.firstLoadingPage.hidden {
+  display: none;
+}
+
+.firstLoadingPage img {
+  position: absolute;
+  width: 80%;
+  max-width: 300px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}

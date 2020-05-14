@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <title>WeatherApp</title>
+  </head>
+  <body>
+    <main id="App">
+      <section class="firstLoadingPage hidden">
+        <img src="./src/images/firstLoader.gif" alt="firstLoader" />
+      </section>
+      <section class="card-container">
+        <div class="card-wrapper">
+          <div class="card">
+            <header class="card__header">
+              <div class="card__menu-wrapper">
+                <div class="card__menu">
+                  <ul class="menu__list">
+                    <li class="menu__list__item">
+                      <button class="settings-button">
+                        <i class="fas fa-cog"></i>
+                      </button>
+                    </li>
+                    <li class="menu__list__item">
+                      <button class="reload-button">
+                        <i class="fas fa-sync-alt"></i>
+                      </button>
+                    </li>
+                    <li class="menu__list__item">
+                      <button class="search-button">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <button class="card__menu-button">
+                  <i class="fas fa-bars"></i>
+                </button>
+              </div>
+            </header>
+            <section class="card__content"></section>
+            <footer class="card__footer"></footer>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      window.onclick = function (e) {
+        console.log(e.target);
+        if (
+          e.target &&
+          e.target === document.querySelector(".card__menu-button")
+        ) {
+          document
+            .querySelector(".menu__list")
+            .classList.toggle("dropDown-animate");
+        }
+      };
+    </script>
+  </body>
+</html>
