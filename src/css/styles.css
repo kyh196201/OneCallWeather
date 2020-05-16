@@ -1,4 +1,5 @@
 @import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "./firstLoader.css";
 @import "./card.css";
 
@@ -28,8 +29,21 @@ button {
   border: none;
 }
 
+#App {
+  max-width: 450px;
+  min-width: 320px;
+  margin: 0 auto;
+  height: 100vh;
+  font-family: "Balsamiq Sans", cursive;
+  border: 1px solid rgb(82, 124, 155, 0.7);
+  position: relative;
+}
+
 :root {
   --menu-button-background: #527c9b;
   --menu-button-font: #fff;
   --background-color: #ffffff;
+  --header-font: #527c9b;
+  --footer-background: #eceff0;
+  --footer-hover: rgb(82, 124, 155, 0.7);
 }
