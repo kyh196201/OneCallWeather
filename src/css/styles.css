@@ -1,7 +1,10 @@
 @import "./reset.css";
 @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "./firstLoader.css";
+@import "./menu.css";
 @import "./card.css";
+@import "./settings.css";
+@import "./search.css";
 
 *,
 *:before,
@@ -37,6 +40,7 @@ button {
   font-family: "Balsamiq Sans", cursive;
   border: 1px solid rgb(82, 124, 155, 0.7);
   position: relative;
+  overflow: hidden;
 }
 
 :root {
@@ -46,4 +50,21 @@ button {
   --header-font: #527c9b;
   --footer-background: #eceff0;
   --footer-hover: rgb(82, 124, 155, 0.7);
+  --settings-font: #464646;
+  --settings-padding: 1rem;
+  --settings-button: #11cfc5;
+  --search-background: #333645;
+}
+
+:root[data-theme="dark"] {
+  --menu-button-background: #527c9b;
+  --menu-button-font: #fff;
+  --background-color: #ffffff;
+  --header-font: #527c9b;
+  --footer-background: #eceff0;
+  --footer-hover: rgb(82, 124, 155, 0.7);
+  --settings-font: #464646;
+  --settings-padding: 1rem;
+  --settings-button: #11cfc5;
+  --search-background: #4d5162;
 }
