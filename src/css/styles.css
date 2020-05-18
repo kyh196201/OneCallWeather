@@ -1,10 +1,12 @@
 @import "./reset.css";
-@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans+KR:wght@400;700&display=swap");
 @import "./firstLoader.css";
+@import "./errorSection.css";
 @import "./menu.css";
 @import "./card.css";
 @import "./settings.css";
 @import "./search.css";
+@import "./dataLoadingPage.css";
 
 *,
 *:before,
@@ -54,6 +56,8 @@ button {
   --settings-padding: 1rem;
   --settings-button: #11cfc5;
   --search-background: #333645;
+  --error-button-background: #ef513a;
+  --error-color: #63666f;
 }
 
 :root[data-theme="dark"] {
@@ -67,4 +71,15 @@ button {
   --settings-padding: 1rem;
   --settings-button: #11cfc5;
   --search-background: #4d5162;
+}
+
+/* Disable Text Drag */
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }

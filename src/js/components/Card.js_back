@@ -1,0 +1,255 @@
+import { makeError } from "../utils/validate.js";
+import { $, createElement } from "../utils/helpers.js";
+import Swiper from "https://unpkg.com/swiper/js/swiper.esm.browser.bundle.min.js";
+import cardHeader from "./cardHeader.js";
+import cardContent from "./cardHeader.js";
+
+class Card {
+  constructor({ $target, data }) {
+    if (!(this instanceof Card)) {
+      throw makeError("New 키워드 없이 선언했습니다.", "NewKeyWordError");
+      console.error("new 키워드 에러, Card");
+    }
+
+    try {
+      this.$target = $target;
+      this.data = data;
+
+      // Data Validate
+
+      // Create Element
+      // Card
+      const $card = createElement("div");
+      $card.classList.add("card", "swiper-slide");
+      this.$card = $card;
+
+      // Card Header
+      const $cardHeader = createElement("header");
+      $cardHeader.className = "card__header";
+      this.$cardHeader = $cardHeader;
+
+      const $cardLocation = createElement("div");
+      $cardLocation.className = "card__location";
+      this.$cardLocation = $cardLocation;
+
+      const $cardCity = createElement("h2");
+      $cardCity.className = "card__city";
+      this.$cardCity = $cardCity;
+
+      const $cardCountry = createElement("div");
+      $cardCountry.className = "card__country";
+      this.$cardCountry = $cardCountry;
+
+      this.$cardLocation.appendChild(this.$cardCity);
+      this.$cardLocation.appendChild(this.$cardCountry);
+      this.$cardHeader.appendChild(this.$cardLocation);
+      // Card Header End
+
+      // Card Content
+      const $cardContent = createElement("section");
+      $cardContent.className = "card__content";
+      this.$cardContent = $cardContent;
+
+      // Card img wrapper
+      const $cardImgWrapper = createElement("article");
+      $cardImgWrapper.className = "card__img-wrapper";
+      this.$cardImgWrapper = $cardImgWrapper;
+
+      const $cardImg = createElement("section");
+      $cardImg.className = "card__img";
+      this.$cardImg = $cardImg;
+
+      this.$cardImgWrapper.appendChild(this.$cardImg);
+
+      // Card greeting Wrapper
+      const $cardGreetingWrapper = createElement("article");
+      $cardGreetingWrapper.className = "card__greeting-wrapper";
+      this.$cardGreetingWrapper = $cardGreetingWrapper;
+
+      const $cardGreeting = createElement("p");
+      $cardGreeting.className = "card__greeting";
+      this.$cardGreeting = $cardGreeting;
+
+      this.$cardGreetingWrapper.appendChild(this.$cardGreeting);
+
+      // Card Weather Container
+      const $cardWeatherContainer = createElement("article");
+      $cardWeatherContainer.className = "card__weather-container";
+      this.$cardWeatherContainer = $cardWeatherContainer;
+
+      const $cardWeatherWrapper = createElement("div");
+      $cardWeatherWrapper.className = "card__weather-wrapper";
+      this.$cardWeatherWrapper = $cardWeatherWrapper;
+
+      // Card Weather Temp
+      const $weatherTemp = document.createElement("section");
+      $weatherTemp.className = "card__weather-temp";
+      this.$weatherTemp = $weatherTemp;
+
+      // Card Weather Today
+      const $weatherToday = document.createElement("section");
+      $weatherToday.className = "card__weather-todayInfo";
+      this.$weatherToday = $weatherToday;
+
+      this.$cardWeatherWrapper.appendChild(this.$weatherTemp);
+      this.$cardWeatherWrapper.appendChild(this.$weatherToday);
+      this.$cardWeatherContainer.appendChild(this.$cardWeatherWrapper);
+
+      this.$cardContent.appendChild(this.$cardImgWrapper);
+      this.$cardContent.appendChild(this.$cardGreetingWrapper);
+      this.$cardContent.appendChild(this.$cardWeatherContainer);
+      // Card Content End
+
+      // Card Footer
+      const $cardFooter = createElement("footer");
+      $cardFooter.className = "card__footer";
+      this.$cardFooter = $cardFooter;
+
+      const $weeklyWeatherCont = createElement("section");
+      $weeklyWeatherCont.classList.add(
+        "weekly-weather-container",
+        "swiper-container"
+      );
+      this.$weeklyWeatherCont = $weeklyWeatherCont;
+
+      const $weeklyWeatherWrapper = createElement("div");
+      $weeklyWeatherWrapper.classList.add(
+        "weekly-weather-wrapper",
+        "swiper-wrapper"
+      );
+      this.$weeklyWeatherWrapper = $weeklyWeatherWrapper;
+
+      this.$weeklyWeatherCont.appendChild(this.$weeklyWeatherWrapper);
+      this.$cardFooter.appendChild(this.$weeklyWeatherCont);
+
+      // Append
+      this.$card.appendChild(this.$cardHeader);
+      this.$card.appendChild(this.$cardContent);
+      this.$card.appendChild(this.$cardFooter);
+
+      this.$target.appendChild(this.$card);
+    } catch (err) {
+      console.error(err);
+      throw makeError(err.message, "SomeThingWrong");
+    }
+
+    this.weeklySlider = new Swiper(".weekly-weather-container", {
+      slidesPerView: 5,
+    });
+
+    this.render();
+  } //Constructor End
+
+  render = () => {
+    this.$cardCity.innerHTML = "Seoul";
+    this.$cardCountry.innerHTML = "Kr";
+    this.$cardImg.innerHTML = ` <img src="./src/images/weather/rain.svg" alt="" />`;
+    this.$cardGreeting.innerHTML = "you might need this";
+    this.$weatherTemp.innerHTML = `
+      <span class="big-temp">22</span>
+      <span class="big-temp-symbol">&#186;</span>
+    `;
+    this.$weatherToday.innerHTML = `
+      <div class="todayInfo__top">
+          <span class="todayInfo__icon"
+            ><i class="fas fa-cloud"></i
+          ></span>
+          <span class="todayInfo__today">today</span>
+      </div>
+      <div class="todayInfo__bottom">
+        <div class="todayInfo__highTemp">
+          <span class="highTemp__icon todayInfo__icon"
+            ><i class="fas fa-long-arrow-alt-up"></i
+          ></span>
+          <span class="highTemp__temp small-temp">22</span>
+        </div>
+        <div class="todayInfo__lowTemp">
+          <span class="lowTemp__icon todayInfo__icon"
+            ><i class="fas fa-long-arrow-alt-down"></i
+          ></span>
+          <span class="lowTemp__temp small-temp">16</span>
+          <span class="low-temp-symbol">&#186;</span>
+        </div>
+      </div>`;
+
+    this.$weeklyWeatherWrapper.innerHTML = ` <article class="weekly-weather swiper-slide today">
+    <span class="weekly-weather-day">mon</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">wed</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">thu</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">fri</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">sat</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">sat</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>
+  <article class="weekly-weather swiper-slide">
+    <span class="weekly-weather__day">sat</span>
+    <span class="weekly-weather-icon"
+      ><i class="fas fa-cloud"></i
+    ></span>
+    <span class="weekly-weather-temp">
+      <span class="weekly-small-temp">16</span>
+      <span class="weekly-small-symbol">&#186;</span>
+    </span>
+  </article>`;
+
+    this.weeklySlider.update();
+  };
+
+  setState = (newData) => {
+    this.data = newData;
+    this.render();
+  };
+}
+
+export default Card;

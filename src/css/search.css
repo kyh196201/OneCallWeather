@@ -1,5 +1,5 @@
 /* Search */
-.search {
+.search-section {
   position: absolute;
   top: 0;
   left: 0;
@@ -12,26 +12,34 @@
   display: none;
 }
 
-.search.showing {
+.search {
+  width: 100%;
+}
+
+.search-section.showing {
   display: block;
 }
 
 /* #333645 */
-.search__main {
+.search-wrapper {
   background-color: var(--search-background);
   width: 100%;
   position: absolute;
   left: 0;
-  top: -200px;
+  top: -360px;
   transition: top 0.5s ease-in-out;
 }
 
-.search.showing .search__main {
+.search-section.showing .search-wrapper {
   animation-name: fadeInFromTop;
   animation-timing-function: ease-in-out;
   animation-duration: 0.5s;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
+}
+
+.search {
+  width: 100%;
 }
 
 @keyframes fadeInFromTop {
@@ -68,7 +76,7 @@
 
 .search__form {
   width: 100%;
-  padding: 1rem 1rem 2rem;
+  padding: 1rem;
 }
 
 .search__form__input {
@@ -91,4 +99,70 @@
   flex: 1 1;
   border: none;
   outline: none;
+}
+
+/* Search History */
+.searchHistory {
+  padding: var(--settings-padding);
+  padding-top: 0;
+}
+
+.searchHistory__header {
+  margin-bottom: var(--settings-padding);
+  position: relative;
+}
+
+.searchHistory__title {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #fff;
+}
+
+.searchHistory__clearAll {
+  background: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.searchHistory__clearAll:hover,
+.searchHistory__clearAll:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.searchHistory__list {
+  /* border: 3px solid #fff; */
+}
+
+.searchHistory__list li {
+  margin-bottom: calc(var(--settings-padding) * 0.5);
+  border-bottom: 1px dotted #fff;
+}
+
+.searchHistory__list li:last-child {
+  border: none;
+}
+
+.searchHistory__list li a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.searchHistory__list li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.searchHistory__deleteButton {
+  background: none;
+  color: #fff;
 }

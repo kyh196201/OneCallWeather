@@ -1,0 +1,95 @@
+/* ErrorSection */
+
+.errorSection {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.errorSection .errorBox {
+  position: relative;
+  top: 30%;
+  width: 90%;
+  min-width: 320px;
+  max-width: 450px;
+  min-height: 320px;
+  max-height: 450px;
+  margin: 0 auto;
+  background-color: var(--background-color);
+}
+
+.errorSection .errorBox .errorBox__close {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+
+.errorSection .errorBox .errorBox__close button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  color: #fff;
+  font-size: 3rem;
+  border-radius: 50%;
+  background-color: var(--error-button-background);
+  transition: background-color 0.5s linear;
+  cursor: pointer;
+}
+
+.errorSection .errorBox .errorBox__close button:hover {
+  background-color: rgba(239, 81, 58, 0.7);
+}
+
+.errorSection .errorBox h2 {
+  color: #92908e;
+  font-size: 2rem;
+  padding-top: 70px;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.errorSection .errorBox p {
+  color: var(--error-color);
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.errorSection .errorBox .errorBox__ok {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.errorSection .errorBox .errorBox__ok button {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 0;
+  background-color: var(--error-button-background);
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  transition: background-color 0.5s linear;
+  cursor: pointer;
+}
+
+.errorSection .errorBox .errorBox__ok button:hover {
+  background-color: rgba(239, 81, 58, 0.7);
+}
