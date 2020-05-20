@@ -9,7 +9,14 @@ const card = (data) => {
   $card.classList.add("card", "swiper-slide");
 
   const makeHTMLString = () => {
-    return cardHeader() + cardContent() + cardFooter();
+    const { current, daily } = data;
+    const climate = current.weather[0].main.toLowerCase();
+    $card.classList.add(climate);
+    return (
+      cardHeader({ city: current.name, country: current.sys.country }) +
+      cardContent({ current, daily }) +
+      cardFooter({ daily })
+    );
   };
 
   $card.innerHTML = makeHTMLString();

@@ -1,81 +1,44 @@
 import { createElement } from "../utils/helpers.js";
-import Swiper from "https://unpkg.com/swiper/js/swiper.esm.browser.bundle.min.js";
+import { DAYS, WEATHER_CASES } from "../utils/constants.js";
 
 const cardFooter = (data) => {
   //Data Validation
+  console.log(data);
+  const { daily } = data;
+  const newDaily = daily.slice(1, 6);
 
   const makeHTMLString = () => {
-    // return this.data.map((d) => console.log(d)).join("");
-    return `<article class="weekly-weather swiper-slide today">
-                    <span class="weekly-weather__day">wed</span>
-                     <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">wed</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">thu</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">fri</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">sat</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">sat</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>
-                    <article class="weekly-weather swiper-slide">
-                        <span class="weekly-weather__day">sat</span>
-                        <span class="weekly-weather-icon"
-                        ><i class="fas fa-cloud"></i
-                        ></span>
-                        <span class="weekly-weather-temp">
-                        <span class="weekly-small-temp">16</span>
-                        <span class="weekly-small-symbol">&#186;</span>
-                        </span>
-                    </article>`;
+    const htmlString = newDaily
+      .map((d, index) => {
+        const { temp, weather, dt } = d;
+        const climate = weather[0].main.toLowerCase();
+        console.log(climate);
+        const now = new Date(Number(dt) * 1000);
+        const day = DAYS[now.getDay()];
+        const TODAY_CLASS = index === 0 ? "today" : "";
+        return ` 
+      <article class="weekly-weather swiper-slide ${TODAY_CLASS}">
+        <span class="weekly-weather__day">${day}</span>
+        <span class="weekly-weather-icon">
+          <i class="fas fa-cloud"></i>
+        </span>
+        <span class="weekly-weather-temp">
+        <span class="weekly-small-temp">
+          <span class="highTemp__icon todayInfo__icon">
+            <i class="fas fa-long-arrow-alt-up"></i>
+          </span>
+          <span class="small-temp-max">${Math.ceil(temp.max)}</span>
+          <span class="highTemp__icon todayInfo__icon">
+            <i class="fas fa-long-arrow-alt-down"></i>
+          </span>
+          <span class="small-temp-min">${Math.floor(temp.min)}</span>
+        </span>
+        <span class="weekly-small-symbol">&#186;</span>
+        </span>
+      </article>`;
+      })
+      .join("");
+    return htmlString;
   };
 
   const $footer = createElement("footer");

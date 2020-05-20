@@ -177,7 +177,8 @@ function SettingsList({ $target }) {
           return;
         }
         if (target === $(".settings__user")) {
-          //   $('.settings__userDetail').classList.toggle(SHOWING_CLASS);
+          this.$settingsList.classList.toggle(SHOWING_CLASS);
+          $(".settings__userDetail").classList.toggle(SHOWING_CLASS);
         }
 
         if (target === $(".settings__darkMode")) {
@@ -194,9 +195,9 @@ function SettingsList({ $target }) {
         "DetectToggle",
         (e) => {
           if (e.target.checked) {
-            console.log("toggle to darkmode");
+            document.documentElement.dataset.theme = "dark";
           } else {
-            console.log("toggle to normal mode");
+            document.documentElement.dataset.theme = "normal";
           }
         }
       );

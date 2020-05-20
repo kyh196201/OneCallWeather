@@ -64,7 +64,7 @@
 .search__title,
 .search__returnButton {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--search-font);
   font-weight: 700;
 }
 
@@ -82,7 +82,7 @@
 .search__form__input {
   padding: 1rem 0;
   width: 100%;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--search-font);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,7 +91,7 @@
 .search__form__input input,
 .search__form__input button {
   background: inherit;
-  color: #fff;
+  color: var(--search-font);
   font-size: 1.5rem;
 }
 
@@ -115,12 +115,12 @@
 .searchHistory__title {
   text-align: center;
   font-size: 1.25rem;
-  color: #fff;
+  color: var(--search-font);
 }
 
 .searchHistory__clearAll {
   background: none;
-  color: #fff;
+  color: var(--search-font);
   font-size: 1rem;
   font-weight: 700;
   position: absolute;
@@ -141,7 +141,7 @@
 
 .searchHistory__list li {
   margin-bottom: calc(var(--settings-padding) * 0.5);
-  border-bottom: 1px dotted #fff;
+  border-bottom: 1px dotted var(--search-font);
 }
 
 .searchHistory__list li:last-child {
@@ -155,7 +155,7 @@
   padding: 0.5rem;
   transition: background-color 0.3s ease-in-out;
   border-radius: 5px;
-  color: #fff;
+  color: var(--search-font);
 }
 
 .searchHistory__list li a:hover {
@@ -164,5 +164,5 @@
 
 .searchHistory__deleteButton {
   background: none;
-  color: #fff;
+  color: var(--search-font);
 }

@@ -40,37 +40,62 @@ button {
   margin: 0 auto;
   height: 100vh;
   font-family: "Balsamiq Sans", cursive;
-  border: 1px solid rgb(82, 124, 155, 0.7);
   position: relative;
   overflow: hidden;
 }
 
 :root {
-  --menu-button-background: #527c9b;
+  --menu-button-background: #464646;
   --menu-button-font: #fff;
-  --background-color: #ffffff;
-  --header-font: #527c9b;
+  --background-color: #fff;
+  --clouds-color: #527c9b;
+  --clouds-color-hover: rgb(82, 124, 155, 0.7);
+  --clear-color: #e8590c;
+  --clear-color-hover: #ffa94d;
+  --rain-color: #364fc7;
+  --rain-color-hover: #748ffc;
+  --drizzle-color: #087f5b;
+  --drizzle-color-hover: #38d9a9;
+  --snow-color: #212529;
+  --snow-color-hover: #868e96;
+  --thunderstorm-color: #e67700;
+  --thunderstorm-color-hover: #fcc419;
   --footer-background: #eceff0;
-  --footer-hover: rgb(82, 124, 155, 0.7);
   --settings-font: #464646;
   --settings-padding: 1rem;
   --settings-button: #11cfc5;
-  --search-background: #333645;
+  --settings-hover: #9cb8d1;
+  --settings-button: #053664;
+  --search-background: #464646;
+  --search-font: #eceff0;
   --error-button-background: #ef513a;
   --error-color: #63666f;
 }
 
 :root[data-theme="dark"] {
-  --menu-button-background: #527c9b;
+  --menu-button-background: #464646;
   --menu-button-font: #fff;
-  --background-color: #ffffff;
-  --header-font: #527c9b;
-  --footer-background: #eceff0;
-  --footer-hover: rgb(82, 124, 155, 0.7);
-  --settings-font: #464646;
+  --background-color: #000;
+  --clouds-color: #527c9b;
+  --clouds-color-hover: rgb(82, 124, 155, 0.7);
+  --clear-color: #e8590c;
+  --clear-color-hover: #ffa94d;
+  --rain-color: #364fc7;
+  --rain-color-hover: #748ffc;
+  --drizzle-color: #087f5b;
+  --drizzle-color-hover: #38d9a9;
+  --snow-color: #212529;
+  --snow-color-hover: #868e96;
+  --thunderstorm-color: #e67700;
+  --thunderstorm-color-hover: #fcc419;
+  --footer-background: #bcc5c8;
+  --settings-font: #fff;
   --settings-padding: 1rem;
-  --settings-button: #11cfc5;
-  --search-background: #4d5162;
+  --settings-button: #1864ab;
+  --search-background: #464646;
+  --search-font: #eceff0;
+  --error-button-background: #ef513a;
+  --error-color: #63666f;
 }
 
 /* Disable Text Drag */
@@ -82,4 +107,10 @@ button {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+@media screen and (min-width: 450px) {
+  #App {
+    border: 1px solid rgb(82, 124, 155, 0.7);
+  }
 }

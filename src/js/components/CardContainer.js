@@ -6,7 +6,6 @@ class CardContainer {
   constructor({ $target, data }) {
     this.$target = $target;
     this.data = data;
-    this.myslider = null;
     this.myWeeklySlider = null;
 
     try {
@@ -22,6 +21,8 @@ class CardContainer {
       this.$cardContainer.appendChild(this.$cardWrapper);
       this.$target.appendChild(this.$cardContainer);
 
+      this.myslider = new Swiper(".card-container");
+
       this.render();
     } catch (err) {
       console.log(err);
@@ -30,11 +31,15 @@ class CardContainer {
   }
 
   render = () => {
-    this.$cardWrapper.innerHTML = card() + card() + card();
-    this.myWeeklySlider = new Swiper(".weekly-weather-container", {
-      slidesPerView: 5,
-    });
-    this.myslider = new Swiper(".card-container");
+    let htmlString = "";
+    let i = 0;
+    while (i < this.data.length) {
+      htmlString += card(this.data[i]);
+      i++;
+    }
+    this.$cardWrapper.innerHTML = htmlString;
+
+    this.myslider.update();
   };
 
   setState = (newData) => {

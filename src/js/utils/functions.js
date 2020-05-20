@@ -1,8 +1,8 @@
 function removeFirstLoader() {
   if (document.readyState === "complete") {
     setTimeout(() => {
-      document.querySelector(".firstLoadingPage").classList.toggle("hidden");
-    }, 1000);
+      document.querySelector(".firstLoadingPage").classList.add("hidden");
+    }, 2000);
   }
 }
 

@@ -88,7 +88,7 @@
 
 .settings__item:hover,
 .settings__item:focus {
-  background-color: #9cb8d1;
+  background-color: var(--settings-hover);
   border-radius: 5px;
 }
 
@@ -279,7 +279,7 @@
 .userDetail__userName {
   text-align: center;
   font-size: 1.5rem;
-  color: #464646;
+  color: var(--settings-font);
   margin-bottom: 30px;
 }
 .userDetail__confirmButton {
@@ -288,17 +288,17 @@
   align-items: center;
 }
 .userDetail__confirmButton > button {
-  background-color: #3e5f6c;
+  background-color: var(--settings-button);
   padding: 0.5rem 1rem;
   border-radius: 10px;
   color: #fff;
-  transition: background-color 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 .userDetail__confirmButton > button:first-child {
   margin-right: 1rem;
 }
 .userDetail__confirmButton > button:hover {
-  background-color: var(--footer-hover);
+  opacity: 0.7;
 }
 
 /* Settings Footer */

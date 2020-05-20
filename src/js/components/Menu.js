@@ -3,10 +3,13 @@ import { makeError } from "../utils/validate.js";
 import { SHOWING_CLASS, DROPDOWN_CLASS } from "../utils/constants.js";
 
 class Menu {
-  constructor({ $target }) {
-    this.$target = $target;
-
+  constructor({ $target, onClose, onOpen }) {
     try {
+      this.$target = $target;
+      this.onClose = onClose;
+      this.onOpen = onOpen;
+      console.log(this.onOpen);
+
       // Menu Wrapper
       const $menuWrapper = createElement("section");
       $menuWrapper.className = "card__menu-wrapper";
@@ -67,12 +70,18 @@ class Menu {
     addEvent(this.$menuList, "click", (e) => {
       const target = e.target;
       this.$menuList.classList.toggle(DROPDOWN_CLASS);
-      if (target && target.nodeName === "BUTTON" && target.dataset.goto) {
-        const goto = "." + target.dataset.goto;
-        $(goto).classList.toggle(SHOWING_CLASS);
-        console.log(goto);
-      } else if (target.className === "reload-button") {
-        console.log("reload data");
+      if (target && target.nodeName === "BUTTON") {
+        const className = target.className.trim();
+        switch (className) {
+          case "search-button":
+            this.onOpen.openSearch();
+            break;
+          case "reload-button":
+            break;
+          case "settings-button":
+            this.onOpen.openSetting();
+            break;
+        }
       } else {
         return;
       }

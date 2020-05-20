@@ -28,6 +28,7 @@ function SettingsMain({ $target }) {
     this.settingsList = new SettingsList({ $target: this.$section });
 
     // Settings Userdetail
+    this.userDetail = new SettingsUserDetail({ $target: this.$section });
   } catch (err) {
     console.error(err);
     throw makeError("오류 발생 콘솔창을 확인해주세요!", "SomeError");

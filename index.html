@@ -122,8 +122,12 @@
                       ><i class="fas fa-cloud"></i
                     ></span>
                     <span class="weekly-weather-temp">
-                      <span class="weekly-small-temp">16</span>
-                      <span class="weekly-small-symbol">&#186;</span>
+                      <span class="weekly-small-temp">
+                        <span class="small-temp-min">15</span>
+                        <span class="weekly-small-symbol">&#186;</span>/
+                        <span class="small-temp-max">17</span>
+                        <span class="weekly-small-symbol">&#186;</span>
+                      </span>
                     </span>
                   </article>
                   <article class="weekly-weather swiper-slide">
@@ -575,7 +579,7 @@
         </div>
       </section>
       <!-- Loading Section -->
-      <section class="dataLoadingPage hidden">
+      <!-- <section class="dataLoadingPage hidden">
         <div class="loader">
           <svg
             version="1.1"
@@ -682,6 +686,9 @@
             Loading Data..
           </div>
         </div>
+      </section> -->
+      <section class="dataLoadingPage hidden">
+        <img src="./src/images/dataLoader.gif" alt="" />
       </section>
     </main>
     <script src="./node_modules/swiper/js/swiper.min.js"></script>
@@ -714,6 +721,8 @@
         // If we need pagination
         // And if we need scrollbar
         slidesPerView: 5,
+        preventClicksPropagation: true,
+        touchMoveStopPropagation: true,
       });
 
       const all = document.querySelectorAll(".weekly-weather-container");
@@ -822,6 +831,31 @@
             window.onkeydown = null;
           }
         });
+
+      // document
+      //   .querySelector(".card-container")
+      //   .addEventListener("mousedown", (e) => {
+      //     // if(e.target && e.target.classList.contains(''))
+      //     console.log(e.target);
+      //     if (e.target && e.target.classList.contains("weekly-weather")) {
+      //       e.stopPropagation();
+      //     }
+      //   });
+    </script>
+    <script src="./src/js/utils/api.js"></script>
+    <script>
+      (async function () {
+        // const pos = await getCoords();
+        // console.log(coords);
+        const coords = await getCoords();
+        const { latitude, longitude } = coords;
+        console.log(coords);
+        const result = await api.fetchWeatherByCoords(
+          coords.latitude,
+          coords.longitude
+        );
+        console.log(result);
+      })();
     </script>
   </body>
 </html>
