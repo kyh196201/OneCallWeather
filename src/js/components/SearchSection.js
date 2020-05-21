@@ -52,6 +52,8 @@ class SearchSection {
   render = () => {
     if (this.visible) {
       this.$searchSection.classList.add(SHOWING_CLASS);
+      console.log(this.data);
+      this.searchHistory.setState(this.data);
       window.onkeydown = (e) => {
         if (e.keyCode === 27) {
           this.onClose();

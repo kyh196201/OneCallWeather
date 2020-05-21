@@ -16,17 +16,15 @@ const searchHistoryList = (data) => {
   if (!data) {
     throw makeError("Data not Exits", "Parameter Error");
   }
-
-  console.log(data);
-  const htmlString = `
-    <li class="searchHistory__list__item">
-        <a href="#"
-            ><span class="searchHistory__city">seoul</span
-            ><button class="searchHistory__deleteButton">
-            <i class="fas fa-times"></i></button
-        ></a>
-    </li>
-  `;
+  const htmlString = data.map((d) => {
+    return ` 
+      <li class="searchHistory__list__item">
+          <span class="searchHistory__city">${d}</span>
+          <button class="searchHistory__deleteButton">
+            <i class="fas fa-times"></i>
+          </button>
+      </li>`;
+  });
   return `<ul class="searchHistory__list">${htmlString}</ul>`;
 };
 
@@ -41,6 +39,7 @@ class SearchHistory {
 
     this.$target = $target;
     this.data = data;
+    console.log(this.data);
     const $searchHistory = createElement("section");
     $searchHistory.className = "searchHistory";
     this.$searchHistory = $searchHistory;
@@ -53,6 +52,11 @@ class SearchHistory {
   render = () => {
     this.$searchHistory.innerHTML =
       searchHistoryHeader() + searchHistoryList(this.data);
+  };
+
+  setState = (newData) => {
+    this.data = newData;
+    this.render();
   };
 }
 

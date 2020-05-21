@@ -57,7 +57,7 @@ function SettingsList({ $target }) {
             </div>
         </article>
         <!-- Profile -->
-        <sesction class="settings__list__section settings__profile__section">
+        <div class="settings__list__section settings__profile__section">
             <h2 class="list__section__title">
             Profile
             </h2>
@@ -93,9 +93,9 @@ function SettingsList({ $target }) {
                 </div>
             </article>
         </div>
-    </sesction>
+    </div>
     <!-- Notification -->
-    <sesction class="settings__list__section settings__notification__section">
+    <div class="settings__list__section settings__notification__section">
         <h2 class="list__section__title">
         Notifications
         </h2>
@@ -122,9 +122,9 @@ function SettingsList({ $target }) {
                 </div>
             </article>
         </div>
-    </sesction>
+    </div>
     <!-- Regional -->
-    <sesction class="settings__list__section settings__regional__section">
+    <div class="settings__list__section settings__regional__section">
         <h2 class="list__section__title">
         Regional
         </h2>
@@ -160,7 +160,7 @@ function SettingsList({ $target }) {
                 </div>
             </article>
         </div>
-    </sesction>
+    </div>
     `;
 
     this.$target.appendChild(this.$settingsList);

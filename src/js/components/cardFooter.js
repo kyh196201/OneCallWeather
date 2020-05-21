@@ -3,7 +3,6 @@ import { DAYS, WEATHER_CASES } from "../utils/constants.js";
 
 const cardFooter = (data) => {
   //Data Validation
-  console.log(data);
   const { daily } = data;
   const newDaily = daily.slice(1, 6);
 
@@ -12,7 +11,6 @@ const cardFooter = (data) => {
       .map((d, index) => {
         const { temp, weather, dt } = d;
         const climate = weather[0].main.toLowerCase();
-        console.log(climate);
         const now = new Date(Number(dt) * 1000);
         const day = DAYS[now.getDay()];
         const TODAY_CLASS = index === 0 ? "today" : "";

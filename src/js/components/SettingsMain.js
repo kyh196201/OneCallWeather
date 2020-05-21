@@ -13,7 +13,7 @@ function SettingsMain({ $target }) {
   try {
     this.$target = $target;
 
-    const $main = createElement("main");
+    const $main = createElement("section");
     $main.className = "settings__main";
     this.$main = $main;
 

@@ -26,7 +26,7 @@
   width: 100%;
   position: absolute;
   left: 0;
-  top: -360px;
+  top: -510px;
   transition: top 0.5s ease-in-out;
 }
 
@@ -44,7 +44,7 @@
 
 @keyframes fadeInFromTop {
   from {
-    top: -200px;
+    top: -510px;
   }
   to {
     top: 0;
@@ -148,7 +148,7 @@
   border: none;
 }
 
-.searchHistory__list li a {
+.searchHistory__list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -156,9 +156,10 @@
   transition: background-color 0.3s ease-in-out;
   border-radius: 5px;
   color: var(--search-font);
+  cursor: pointer;
 }
 
-.searchHistory__list li a:hover {
+.searchHistory__list li:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
