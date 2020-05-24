@@ -16,11 +16,19 @@ const weatherTemp = (data) => {
 const weatherTodayInfo = (data) => {
   // Data validation
   const { climate, max, min } = data;
+  const id = climate.id;
+  const _id = id.toString();
+  let main = "";
+  if (_id.substr(0, 1) === "7") {
+    main = "clouds";
+  } else {
+    main = climate.main.toLowerCase();
+  }
   return `
     <section class="card__weather-todayInfo">
         <div class="todayInfo__top">
         <span class="todayInfo__icon">
-          ${WEATHER_CASES[climate].icon}
+          ${WEATHER_CASES[main].icon}
         </span>
         <span class="todayInfo__today">today</span>
         </div>
@@ -47,10 +55,18 @@ const weatherTodayInfo = (data) => {
 const cardImgWrapper = (data) => {
   // Data validation
   const { climate } = data;
+  const id = climate.id;
+  let main = "";
+  const _id = id.toString();
+  if (_id.substr(0, 1) === "7") {
+    main = "clouds";
+  } else {
+    main = climate.main.toLowerCase();
+  }
   return `
     <article class="card__img-wrapper">
         <section class="card__img">
-          <img src="${WEATHER_CASES[climate].img}" alt="" /> 
+          <img src="${WEATHER_CASES[main].img}" alt="" /> 
         </section>
     </article>
     `;
@@ -60,12 +76,19 @@ const cardImgWrapper = (data) => {
 const cardGreetingWrapper = (data) => {
   // Data Validation
   const { climate } = data;
-  console.log(climate);
+  const { id } = climate;
+  let main = "";
+  const _id = id.toString();
+  if (_id.substr(0, 1) === "7") {
+    main = "clouds";
+  } else {
+    main = climate.main.toLowerCase();
+  }
 
   return `
     <article class="card__greeting-wrapper">
         <p class="card__greeting">
-          ${WEATHER_CASES[climate].greeting}
+          ${WEATHER_CASES[main].greeting}
         </p>
     </article>
     `;
@@ -87,7 +110,7 @@ const cardContent = (data) => {
   // Data Validation
   const { current, daily } = data;
   const { weather, main } = current;
-  const climate = weather[0].main.toLowerCase();
+  const climate = weather[0];
   const { temp } = main;
   const tempObj = daily[0].temp;
   return (

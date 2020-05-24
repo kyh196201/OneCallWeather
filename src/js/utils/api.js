@@ -54,6 +54,7 @@ const api = {
         daily: res[1].daily,
         coord: { lat, lon },
       };
+      console.log(result);
       return result;
     } catch (err) {
       throw err;

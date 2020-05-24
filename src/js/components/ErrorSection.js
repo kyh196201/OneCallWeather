@@ -27,7 +27,7 @@ class ErrorSection {
       this.$errorSection.style.display = "block";
       window.onkeydown = (e) => {
         const keyCode = e.keyCode;
-        if (keyCode && keyCode === 27) {
+        if (keyCode === 27 || keyCode === 13) {
           this.onClick();
         } else {
           return;

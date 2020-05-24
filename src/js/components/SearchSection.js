@@ -5,7 +5,15 @@ import SearchHistory from "./SearchHistory.js";
 import { SHOWING_CLASS } from "../utils/constants.js";
 
 class SearchSection {
-  constructor({ $target, data, visible, onSearch, onClose }) {
+  constructor({
+    $target,
+    data,
+    visible,
+    onSearch,
+    onClose,
+    onClick,
+    onDelete,
+  }) {
     if (!(this instanceof SearchSection)) {
       throw makeError(
         "New 키워드 없이 실행했습니다. In SearchSection",
@@ -20,6 +28,8 @@ class SearchSection {
     this.visible = visible || false;
     this.onSearch = onSearch;
     this.onClose = onClose;
+    this.onClick = onClick;
+    this.onDelete = onDelete;
 
     // SearchSection
     const $searchSection = createElement("section");
@@ -73,11 +83,27 @@ class SearchSection {
   bindEvents = () => {
     addEvent(this.$searchSection, "click", (e) => {
       const target = e.target;
-      if (
-        (target && target.classList.contains("search-section")) ||
-        (target && target.classList.contains("search__returnButton"))
+      if (!target) {
+        return;
+      } else if (
+        target.classList.contains("search-section") ||
+        target.classList.contains("search__returnButton")
       ) {
         this.onClose();
+      } else if (target.classList.contains("searchHistory__list__item")) {
+        const city = target.dataset.city.trim();
+        this.onClick(city);
+      } else if (target.classList.contains("searchHistory__deleteButton")) {
+        const parent = target.parentNode;
+        if (!parent) {
+          return;
+        }
+        const id = parent.dataset.id;
+        if (confirm("기록을 삭제하시겠습니까??")) {
+          this.onDelete(id);
+        }
+      } else {
+        return;
       }
     });
   };
